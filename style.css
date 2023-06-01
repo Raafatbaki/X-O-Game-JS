@@ -65,4 +65,20 @@ body {
 .square:hover {
   background-color: #c6b439;
 }
+.action-btn {
+  font-size: 30px;
+  padding: 7px 30px;
+  border-radius: 30px;
+  box-shadow: 0px 5px 13px rgba(0, 0, 0, 0.2);
+  color: white;
+  border: none;
+  transition: all 0.3s;
+  background: rgb(84 60 172);
+  cursor: pointer;
+  margin-top: 10px;
+}
+.action-btn:hover {
+  box-shadow: 0px 20px 15px rgba(0, 0, 0, 0.5);
+  background: rgb(137, 105, 240);
+}
 /* ======= //CLASSES STYLES// ======= */
