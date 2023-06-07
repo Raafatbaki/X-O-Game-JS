@@ -1,10 +1,17 @@
 let gridItems = document.getElementsByClassName("square");
 let currentTurn = "x";
+let gameIsFinished = false
 
 let boardArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
 
 for (const item of gridItems) {
   item.addEventListener("click", function () {
+
+    if (gameIsFinished)
+    {
+      return
+    }
+
     let value = item.getAttribute("value");
 
     //filling the value visually
@@ -47,9 +54,23 @@ for (const item of gridItems) {
         ){
           var winner = currentTurn == "o" ? "0" : "x"
           alert(`${winner} Won` )
+          gameIsFinished =true
+          return
         }
 
-
+        var isDraw = true
+        for(squre of boardArray)
+        {
+          if (squre != "x" && squre != "o")
+          {
+            isDraw = false
+          }
+        }
+        if(isDraw)
+        {
+          gameIsFinished = true
+          alert("draw")
+        }
     }
   });
 }
