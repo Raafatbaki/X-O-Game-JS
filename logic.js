@@ -19,8 +19,10 @@ for (const item of gridItems)
     }
     //filling the value visually
 
-    let squareContent = document.querySelector(`.square[value="${value}"]`);
-    squareContent.innerHTML = currentTurn;
+    let squareContent = document.querySelector(`.square[value='${value}'] .square-content`)
+        squareContent.innerHTML = currentTurn        
+        squareContent.classList.add('animate__animated', 'animate__bounceIn');
+          
 
     //filling the value logically
     boardArray[index] = currentTurn;
@@ -51,7 +53,9 @@ for (const item of gridItems)
       ) {
         var winner = currentTurn == "o" ? "0" : "x";
         gameIsFinished = true;
-        alertify.alert(`${winner} Won!`)
+        alertify.alert(`${winner} Won!`, '', function(){
+
+        })
         return;
       }
 
@@ -63,7 +67,9 @@ for (const item of gridItems)
       }
       if (isDraw) {
         gameIsFinished = true;
-        alert("draw");
+        alertify.alert(`Draw`, '', function(){
+
+        })
       }
     }
   });
@@ -79,9 +85,22 @@ function reset()
   for (item of gridItems)
   {
     let value = item.getAttribute("value")
-    let squareContent = document.querySelector(`.square[value='${value}'] .square-content`) 
-    squareContent = document.querySelector(`.square[value="${value}"]`)
-    squareContent.innerHTML = ""
+    let squareContent = document.querySelector(`.square[value='${value}'] .square-content`)
+    squareContent.classList.remove('animate__animated', 'animate__bounceIn');
+    squareContent.classList.add('animate__animated', 'animate__bounceOut');
+    
+    squareContent.addEventListener('animationend', (animation) => {
+      
+      if(animation.animationName == "bounceOut")
+      {
+          squareContent.classList.remove('animate__animated', 'animate__bounceOut');
+          squareContent.innerHTML = ""
+      }
+      
+  });
+
+
+
 
     boardArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
   }
