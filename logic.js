@@ -33,6 +33,7 @@ for (const item of gridItems)
     } else {
       currentTurn = "x";
     }
+    document.getElementById("instruction").textContent = `${currentTurn} turn`
 
     function evaluateBoard() {
       if (
@@ -86,5 +87,7 @@ function reset()
   }
   
   gameIsFinished = false
+  currentTurn = "x"
+  document.getElementById("instruction").innerText = `${currentTurn} turn`
 
 }
