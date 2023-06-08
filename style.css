@@ -1,20 +1,20 @@
 /* ======= ELEMENTS STYLES ======= */
 body {
-  background-color: #1B1B1B;
+  background-color: #1b1b1b;
   margin: 0px;
   padding: 0px;
-  font-family: 'Shantell Sans', cursive;
+  font-family: "Shantell Sans", cursive;
 }
 button {
-  font-family: 'Shantell Sans', cursive;
+  font-family: "Shantell Sans", cursive;
 }
 /* =======// ELEMENTS STYLES //======= */
 
 /* ======= IDs STYLES ======= */
-#all-content { 
+#all-content {
   height: 90vh;
-  margin: 0px;   
-  padding: 50px; 
+  margin: 0px;
+  padding: 50px;
 }
 #main-content {
   width: 100%;
@@ -36,12 +36,12 @@ button {
   height: 10%;
   margin-bottom: 10px;
 }
-#header-and-board-wrapper{
+#header-and-board-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40%;    
+  width: 40%;
 }
 #footer {
   margin-top: 15px;
@@ -54,7 +54,7 @@ button {
 
 /* ======= CLASSES STYLES ======= */
 .grid-container {
-  background-color: #F0DB4F;
+  background-color: #f0db4f;
   display: grid;
   grid-template-columns: auto auto auto;
   border: #4d4d4d solid 12px;
@@ -62,7 +62,7 @@ button {
   box-shadow: 0px 5px 13px rgba(0, 0, 0, 0.9);
   height: 90%;
   padding: 50px;
-  aspect-ratio: 1;    
+  aspect-ratio: 1;
 }
 .square {
   border: 3px solid rgba(0, 0, 0, 0.8);
@@ -92,7 +92,7 @@ button {
   box-shadow: 0px 20px 15px rgba(0, 0, 0, 0.5);
   background: rgb(137, 105, 240);
 }
-.square-content{
+.square-content {
   width: 30px;
   height: 30px;
   font-size: 30px;

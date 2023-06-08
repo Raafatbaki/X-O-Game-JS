@@ -4,8 +4,7 @@ let gameIsFinished = false;
 
 let boardArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
 
-for (const item of gridItems) 
-{
+for (const item of gridItems) {
   item.addEventListener("click", function () {
     if (gameIsFinished) {
       return;
@@ -13,16 +12,16 @@ for (const item of gridItems)
 
     let value = item.getAttribute("value");
     let index = value - 1;
-    if(boardArray[index] == "x" || boardArray[index] == "o")
-    {
-      return
+    if (boardArray[index] == "x" || boardArray[index] == "o") {
+      return;
     }
     //filling the value visually
 
-    let squareContent = document.querySelector(`.square[value='${value}'] .square-content`)
-        squareContent.innerHTML = currentTurn        
-        squareContent.classList.add('animate__animated', 'animate__bounceIn');
-          
+    let squareContent = document.querySelector(
+      `.square[value='${value}'] .square-content`
+    );
+    squareContent.innerHTML = currentTurn;
+    squareContent.classList.add("animate__animated", "animate__bounceIn");
 
     //filling the value logically
     boardArray[index] = currentTurn;
@@ -35,7 +34,7 @@ for (const item of gridItems)
     } else {
       currentTurn = "x";
     }
-    document.getElementById("instruction").textContent = `${currentTurn} turn`
+    document.getElementById("instruction").textContent = `${currentTurn} turn`;
 
     function evaluateBoard() {
       if (
@@ -53,9 +52,7 @@ for (const item of gridItems)
       ) {
         var winner = currentTurn == "o" ? "0" : "x";
         gameIsFinished = true;
-        alertify.alert(`${winner} Won!`, '', function(){
-
-        })
+        alertify.alert(`${winner} Won!`, "", function () {});
         return;
       }
 
@@ -67,46 +64,39 @@ for (const item of gridItems)
       }
       if (isDraw) {
         gameIsFinished = true;
-        alertify.alert(`Draw`, '', function(){
-
-        })
+        alertify.alert(`Draw`, "", function () {});
       }
     }
   });
 }
 
-document.getElementById("reset-btn").addEventListener("click", function(){
-  reset()
-})
-function reset()
-{
-
+document.getElementById("reset-btn").addEventListener("click", function () {
+  reset();
+});
+function reset() {
   //resting the visual part
-  for (item of gridItems)
-  {
-    let value = item.getAttribute("value")
-    let squareContent = document.querySelector(`.square[value='${value}'] .square-content`)
-    squareContent.classList.remove('animate__animated', 'animate__bounceIn');
-    squareContent.classList.add('animate__animated', 'animate__bounceOut');
-    
-    squareContent.addEventListener('animationend', (animation) => {
-      
-      if(animation.animationName == "bounceOut")
-      {
-          squareContent.classList.remove('animate__animated', 'animate__bounceOut');
-          squareContent.innerHTML = ""
+  for (item of gridItems) {
+    let value = item.getAttribute("value");
+    let squareContent = document.querySelector(
+      `.square[value='${value}'] .square-content`
+    );
+    squareContent.classList.remove("animate__animated", "animate__bounceIn");
+    squareContent.classList.add("animate__animated", "animate__bounceOut");
+
+    squareContent.addEventListener("animationend", (animation) => {
+      if (animation.animationName == "bounceOut") {
+        squareContent.classList.remove(
+          "animate__animated",
+          "animate__bounceOut"
+        );
+        squareContent.innerHTML = "";
       }
-      
-  });
-
-
-
+    });
 
     boardArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
   }
-  
-  gameIsFinished = false
-  currentTurn = "x"
-  document.getElementById("instruction").innerText = `${currentTurn} turn`
 
+  gameIsFinished = false;
+  currentTurn = "x";
+  document.getElementById("instruction").innerText = `${currentTurn} turn`;
 }
