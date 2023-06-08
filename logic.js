@@ -4,21 +4,25 @@ let gameIsFinished = false;
 
 let boardArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
 
-for (const item of gridItems) {
+for (const item of gridItems) 
+{
   item.addEventListener("click", function () {
     if (gameIsFinished) {
       return;
     }
 
     let value = item.getAttribute("value");
-
+    let index = value - 1;
+    if(boardArray[index] == "x" || boardArray[index] == "o")
+    {
+      return
+    }
     //filling the value visually
 
     let squareContent = document.querySelector(`.square[value="${value}"]`);
     squareContent.innerHTML = currentTurn;
 
     //filling the value logically
-    let index = value - 1;
     boardArray[index] = currentTurn;
 
     console.log(boardArray);
@@ -62,4 +66,25 @@ for (const item of gridItems) {
       }
     }
   });
+}
+
+document.getElementById("reset-btn").addEventListener("click", function(){
+  reset()
+})
+function reset()
+{
+
+  //resting the visual part
+  for (item of gridItems)
+  {
+    let value = item.getAttribute("value")
+    let squareContent = document.querySelector(`.square[value='${value}'] .square-content`) 
+    squareContent = document.querySelector(`.square[value="${value}"]`)
+    squareContent.innerHTML = ""
+
+    boardArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
+  }
+  
+  gameIsFinished = false
+
 }
