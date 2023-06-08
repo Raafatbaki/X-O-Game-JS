@@ -50,8 +50,8 @@ for (const item of gridItems)
         (boardArray[0] == boardArray[4] && boardArray[4] == boardArray[8])
       ) {
         var winner = currentTurn == "o" ? "0" : "x";
-        alert(`${winner} Won`);
         gameIsFinished = true;
+        alertify.alert(`${winner} Won!`)
         return;
       }
 
